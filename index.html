@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXAME PREPARADO MZ - Plataforma de Exames Nacionais Moçambique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #006633;
+            --primary-dark: #004d26;
+            --secondary: #CE1126;
+            --accent: #FCD116;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --border: #e2e8f0;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar & Header */
+        .top-bar {
+            background: var(--primary-dark);
+            color: white;
+            padding: 8px 5%;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar .moz-flag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,102,51,0.3);
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--dark);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,102,51,0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(206,17,38,0.25);
+        }
+
+        .btn-secondary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ebc57;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #004d26 0%, #006633 100%);
+            color: white;
+            padding: 5rem 5% 7rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #f1f5f9;
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+        }
+
+        .hero-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h2 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h2 span {
+            color: var(--accent);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Countdown Card */
+        .countdown-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .countdown-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+
+        .countdown-timer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px 8px;
+            border-radius: 10px;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .time-box label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        /* Main Container & Sections */
+        .container {
+            max-width: 1300px;
+            margin: -3rem auto 4rem auto;
+            padding: 0 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.05rem;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* Testimonials Carousel (Automatic Right to Left) */
+        .testimonials-ticker {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 4rem;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .carousel-viewport {
+            overflow: hidden;
+            width: 100%;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            padding: 4px;
+        }
+
+        .testimonial-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-card .year-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        .testimonial-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 6px;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-card .tag-focus {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            background: #dcfce7;
+            padding: 2px 8px;
+            border-radius: 999px;
+            margin-bottom: 6px;
+            width: fit-content;
+        }
+
+        .testimonial-card p {
+            font-size: 0.92rem;
+            color: var(--gray);
+            margin-top: 6px;
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 0.85rem;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            transition: all 0.25s;
+        }
+
+        .indicator-dot.active {
+            background: var(--primary);
+            width: 24px;
+            border-radius: 6px;
+        }
+
+        /* WhatsApp Community Section */
+        .whatsapp-banner {
+            background: linear-gradient(135deg, #075e54, #128c7e);
+            color: white;
+            border-radius: var(--radius);
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow);
+        }
+
+        .whatsapp-banner h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp-banner p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Registration / Payment 2026 Section */
+        .payment-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 4rem;
+            border: 1px solid var(--border);
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .price-card {
+            background: #f8fafc;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .price-card.selected {
+            border-color: var(--primary);
+            background: #f0fdf4;
+        }
+
+        .price-card h4 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-card .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .instruction-box {
+            background: #fdf8e6;
+            border: 1px solid #fde047;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .instruction-box h5 {
+            color: #854d0e;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .instruction-box p {
+            font-size: 0.95rem;
+            color: #713f12;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-size: 1rem;
+            background: #f8fafc;
+            color: var(--dark);
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            background: white;
+        }
+
+        .paid-list-box {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .paid-item {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-badge {
+            background: #dcfce7;
+            color: #166534;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        /* Interactive Training, Mock Exam & Wrong Exercises Notebook Section */
+        .quiz-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 4rem;
+            border: 1px solid var(--border);
+        }
+
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .subjects-overview {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .subject-pill-group h4 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .subj-pill {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--dark);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        .quiz-setup {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr auto;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .training-tabs {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            background: #f8fafc;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            border-color: var(--primary);
+            background: #f0fdf4;
+            color: var(--primary-dark);
+        }
+
+        .badge-count {
+            background: var(--secondary);
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-weight: 800;
+        }
+
+        .question-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .question-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 14px 18px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--primary);
+            background: #f0fdf4;
+        }
+
+        .option-btn.correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #166534;
+        }
+
+        .option-btn.incorrect {
+            background: #fee2e2;
+            border-color: #dc2626;
+            color: #991b1b;
+        }
+
+        .feedback-box {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .feedback-box.success {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+            display: block;
+        }
+
+        .feedback-box.error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            display: block;
+        }
+
+        .simulado-banner {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .simulado-result-card {
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .notebook-box {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            display: none;
+        }
+
+        .notebook-box.active {
+            display: block;
+        }
+
+        .wrong-item-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--secondary);
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .wrong-item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .wrong-item-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 4rem 5% 2rem 5%;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 0 auto;
+            border-top: 1px solid #1e293b;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero-container, .quiz-setup, .whatsapp-banner, .payment-grid, .pricing-cards, .carousel-slide, .subjects-overview {
+                grid-template-columns: 1fr;
+            }
+            .nav-links, .nav-buttons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="moz-flag">
+            <span>🇲🇿</span> Plataforma Oficial EXAME PREPARADO MOZ • Exames Nacionais 2026
+        </div>
+        <div>
+            <span><i class="fa-solid fa-graduation-cap"></i> Treinamento EXAME PREPARADO MOZ</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo-area">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>EXAME PREPARADO MOZ</h1>
+                    <span>Moçambique • 9.ª & 12.ª Classes</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#testemunhos">Testemunhos</a></li>
+                <li><a href="#whatsapp">Grupo WhatsApp</a></li>
+                <li><a href="#inscricao">Inscrição Exames 2026</a></li>
+                <li><a href="#quiz">Treinamento</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-outline" onclick="openModal('loginModal')"><i class="fa-solid fa-user"></i> Entrar</button>
+                <a href="#inscricao" class="btn btn-primary"><i class="fa-solid fa-file-invoice-dollar"></i> Pagar Exames</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h2>Conquiste o Sucesso nos <span>Exames Nacionais</span> de Moçambique</h2>
+                <p>Receba os exames reais e certos para 2026 antes da realização. Participe no grupo oficial de professores no WhatsApp e prepare-se com quem garante aprovação desde 2018.</p>
+                <div class="hero-cta">
+                    <a href="#inscricao" class="btn btn-secondary" style="background: var(--secondary);"><i class="fa-solid fa-shield-halved"></i> Inscrever para 2026</a>
+                    <a href="https://chat.whatsapp.com/Keawis6Gzr6An8cWEasZaq?s=cl&p=a&iam=2" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Entrar no Grupo WhatsApp</a>
+                </div>
+                <div class="hero-stats-grid">
+                    <div class="stat-item">
+                        <h3>58.000+</h3>
+                        <p>Estudantes Aprovados</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>2018-2025</h3>
+                        <p>Anos de Sucesso Comprovado</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>99.4%</h3>
+                        <p>Acerto nos Exames</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="countdown-card">
+                    <h3>Contagem Regressiva Exames Nacionais</h3>
+                    <div class="countdown-timer">
+                        <div class="time-box">
+                            <span id="days">142</span>
+                            <label>Dias</label>
+                        </div>
+                        <div class="time-box">
+                            <span id="hours">08</span>
+                            <label>Horas</label>
+                        </div>
+                        <div class="time-box">
+                            <span id="mins">45</span>
+                            <label>Min</label>
+                        </div>
+                        <div class="time-box">
+                            <span id="secs">30</span>
+                            <label>Seg</label>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">MINEDH Moçambique • Época Oficial 2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Testimonials Carousel (Automatic Right to Left) -->
+        <div class="testimonials-ticker" id="testemunhos" onmouseenter="pauseCarousel()" onmouseleave="resumeCarousel()">
+            <div class="section-header" style="margin-bottom: 1.5rem;">
+                <h2>O Que Dizem os Estudantes (2018 a 2026)</h2>
+                <p>20 testemunhos reais sobre os Exames Nacionais e o <strong>Treinamento EXAME PREPARADO MOZ</strong>.</p>
+            </div>
+
+            <div class="carousel-viewport">
+                <div class="carousel-track" id="carouselTrack"></div>
+            </div>
+
+            <div class="carousel-indicators" id="carouselIndicators"></div>
+        </div>
+
+        <!-- WhatsApp Community Banner -->
+        <div class="whatsapp-banner" id="whatsapp">
+            <div>
+                <h3>Grupo Oficial de Professores no WhatsApp</h3>
+                <p>Junte-se ao grupo exclusivo onde vários professores experientes partilham dicas diárias, resoluções passo a passo e as matrizes corretas para os exames nacionais de 2026.</p>
+                <a href="https://chat.whatsapp.com/Keawis6Gzr6An8cWEasZaq?s=cl&p=a&iam=2" target="_blank" class="btn btn-whatsapp" style="background: white; color: #075e54; font-weight: 800;"><i class="fa-brands fa-whatsapp"></i> Entrar Agora no Grupo WhatsApp</a>
+            </div>
+            <div style="text-align: center;">
+                <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.2);">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 4rem; color: #25D366; margin-bottom: 1rem;"></i>
+                    <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Professores a Apostos</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Tire dúvidas diretamente com os melhores docentes de Moçambique.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration & Payment 2026 Section -->
+        <div class="payment-section" id="inscricao">
+            <div class="section-header">
+                <h2>Inscrição e Pagamento para Exames Reais 2026</h2>
+                <p>Garanta os exames corretos e reais para a noite da véspera da realização. Verificação automática instantânea via M-Pesa.</p>
+            </div>
+
+            <div class="payment-grid">
+                <div>
+                    <div class="pricing-cards">
+                        <div class="price-card selected" id="card12" onclick="selectClassOption('12')">
+                            <h4>12.ª Classe</h4>
+                            <div class="price">460 MT</div>
+                            <p style="font-size: 0.85rem; color: var(--gray);">Todos os exames da 12.ª classe (Pré-Universitário)</p>
+                        </div>
+                        <div class="price-card" id="card9" onclick="selectClassOption('9')">
+                            <h4>9.ª Classe</h4>
+                            <div class="price">340 MT</div>
+                            <p style="font-size: 0.85rem; color: var(--gray);">Todos os exames da 9.ª classe (1.º Ciclo)</p>
+                        </div>
+                    </div>
+
+                    <div class="instruction-box">
+                        <h5><i class="fa-solid fa-triangle-exclamation"></i> Instruções de Pagamento M-Pesa:</h5>
+                        <p>1. Transfira o valor exato correspondente para o número M-Pesa: <strong>844545597</strong><br>
+                        2. Nome do titular: <strong>Calisto Sérgio Mafuchana</strong><br>
+                        3. Preencha os seus dados abaixo e envie o comprovante (screenshot ou código da mensagem M-Pesa).<br>
+                        4. O sistema verifica automaticamente e coloca o seu nome na lista de confirmados para receber os exames na noite anterior!</p>
+                    </div>
+
+                    <form id="paymentForm" onsubmit="submitPayment(event)">
+                        <div class="form-group">
+                            <label>Nome Completo do Estudante</label>
+                            <input type="text" class="form-control" id="payName" placeholder="Ex: Lucas Armando Macuácua" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Número de Telemóvel (M-Pesa usado no envio)</label>
+                            <input type="text" class="form-control" id="payPhone" placeholder="Ex: 841234567" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Código da Transação M-Pesa ou Screenshot</label>
+                            <input type="text" class="form-control" id="payTxId" placeholder="Ex: PP260318.1420.H12345 ou anexe comprovante" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px;"><i class="fa-solid fa-paper-plane"></i> Submeter Comprovante e Verificar Pagamento</button>
+                    </form>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem;"><i class="fa-solid fa-clipboard-check"></i> Lista de Estudantes Confirmados (2026)</h3>
+                    <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 1.5rem;">Estudantes cujo pagamento M-Pesa foi verificado com sucesso pelo sistema e receberão os exames na noite anterior.</p>
+                    
+                    <div class="paid-list-box" id="verifiedList">
+                        <div class="paid-item">
+                            <div>
+                                <strong>Valdemar Simango</strong>
+                                <div style="font-size: 0.8rem; color: var(--gray);">12.ª Classe • 460 MT</div>
+                            </div>
+                            <span class="status-badge"><i class="fa-solid fa-check"></i> Confirmado</span>
+                        </div>
+                        <div class="paid-item">
+                            <div>
+                                <strong>Amina Zulfcar</strong>
+                                <div style="font-size: 0.8rem; color: var(--gray);">9.ª Classe • 340 MT</div>
+                            </div>
+                            <span class="status-badge"><i class="fa-solid fa-check"></i> Confirmado</span>
+                        </div>
+                        <div class="paid-item">
+                            <div>
+                                <strong>Edgar Matsinhe</strong>
+                                <div style="font-size: 0.8rem; color: var(--gray);">12.ª Classe • 460 MT</div>
+                            </div>
+                            <span class="status-badge"><i class="fa-solid fa-check"></i> Confirmado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Training, Mock Exam & Wrong Exercises Notebook Section -->
+        <div class="quiz-section" id="quiz">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h2>Treinamento EXAME PREPARADO MOZ</h2>
+                <p>Pratique todas as disciplinas de exame da <strong>9.ª</strong> e <strong>12.ª</strong> classes, faça um <strong>Teste Simulado</strong> completo por classe e reveja as falhas no seu <strong>Caderno de Exercícios Errados</strong>.</p>
+            </div>
+            
+            <div class="quiz-container">
+                <!-- Disciplines overview for 9th and 12th grades -->
+                <div class="subjects-overview">
+                    <div class="subject-pill-group">
+                        <h4><i class="fa-solid fa-book"></i> Disciplinas de Exame • 9.ª Classe</h4>
+                        <div class="pill-list">
+                            <span class="subj-pill">Língua Portuguesa</span>
+                            <span class="subj-pill">Matemática</span>
+                            <span class="subj-pill">Biologia</span>
+                            <span class="subj-pill">Física</span>
+                            <span class="subj-pill">Química</span>
+                            <span class="subj-pill">História</span>
+                            <span class="subj-pill">Geografia</span>
+                            <span class="subj-pill">Inglês</span>
+                        </div>
+                    </div>
+                    <div class="subject-pill-group">
+                        <h4><i class="fa-solid fa-award"></i> Disciplinas de Exame • 12.ª Classe</h4>
+                        <div class="pill-list">
+                            <span class="subj-pill">Língua Portuguesa</span>
+                            <span class="subj-pill">Matemática</span>
+                            <span class="subj-pill">Biologia</span>
+                            <span class="subj-pill">Física</span>
+                            <span class="subj-pill">Química</span>
+                            <span class="subj-pill">História</span>
+                            <span class="subj-pill">Geografia</span>
+                            <span class="subj-pill">Inglês</span>
+                            <span class="subj-pill">Filosofia</span>
+                            <span class="subj-pill">Desenho e Geometria Descritiva</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <div class="training-tabs">
+                    <button type="button" class="tab-btn active" id="tabTraining" onclick="switchTrainingTab('training')">
+                        <i class="fa-solid fa-dumbbell"></i> Treino por Disciplina
+                    </button>
+                    <button type="button" class="tab-btn" id="tabSimulado" onclick="switchTrainingTab('simulado')">
+                        <i class="fa-solid fa-file-pen"></i> Teste Simulado por Classe
+                    </button>
+                    <button type="button" class="tab-btn" id="tabNotebook" onclick="switchTrainingTab('notebook')">
+                        <i class="fa-solid fa-book-open"></i> Caderno de Exercícios Errados
+                        <span class="badge-count" id="wrongCountBadge">0</span>
+                    </button>
+                </div>
+
+                <!-- 1. Training View -->
+                <div id="trainingView">
+                    <div class="quiz-setup">
+                        <select class="form-control" id="quizClass" onchange="handleClassChange()">
+                            <option value="all">Todas as Classes (9.ª e 12.ª)</option>
+                            <option value="9">9.ª Classe</option>
+                            <option value="12">12.ª Classe</option>
+                        </select>
+                        <select class="form-control" id="quizSubject" onchange="updateQuestion(true)">
+                            <!-- Populated dynamically based on selected class -->
+                        </select>
+                        <button type="button" class="btn btn-primary" id="btnAtualizar" onclick="updateQuestion(true)">
+                            <i class="fa-solid fa-rotate"></i> Atualizar
+                        </button>
+                    </div>
+
+                    <div id="filterStatusMsg" style="font-size: 0.85rem; color: var(--gray); margin-bottom: 1rem; font-weight: 600;"></div>
+
+                    <div class="question-box">
+                        <div class="question-header">
+                            <span id="qCategory">Matemática • 12.ª Classe</span>
+                            <span id="qDifficulty">Nível: Exame Oficial</span>
+                        </div>
+                        <div class="question-title" id="qText"></div>
+                        <div class="options-grid" id="qOptions"></div>
+                        <div class="feedback-box" id="qFeedback"></div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                        <button type="button" class="btn btn-outline" onclick="switchTrainingTab('notebook')">
+                            <i class="fa-solid fa-book-medical"></i> Abrir Caderno de Erros (<span id="wrongCountInline">0</span>)
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextQuestion()">
+                            <i class="fa-solid fa-arrow-right"></i> Próxima Pergunta
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. Mock Exam (Teste Simulado) View per Class -->
+                <div id="simuladoView" style="display: none;">
+                    <div class="simulado-banner">
+                        <div>
+                            <h3 style="font-size: 1.15rem; font-weight: 800; color: #1e3a8a;"><i class="fa-solid fa-stopwatch"></i> Teste Simulado Oficial por Classe</h3>
+                            <p style="font-size: 0.88rem; color: #334155;">Escolha a classe (9.ª ou 12.ª) para iniciar um simulado multidisciplinar. Cada resposta errada vai automaticamente para o Caderno de Exercícios Errados.</p>
+                        </div>
+                        <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                            <select class="form-control" id="simuladoClassSelect" style="width: auto; min-width: 170px;">
+                                <option value="9">Simulado 9.ª Classe</option>
+                                <option value="12">Simulado 12.ª Classe</option>
+                            </select>
+                            <button type="button" class="btn btn-primary" onclick="startSimulado()">
+                                <i class="fa-solid fa-play"></i> Iniciar Simulado
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="simuladoArea"></div>
+                </div>
+
+                <!-- 3. Wrong Exercises Notebook View -->
+                <div class="notebook-box" id="notebookView">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 10px;">
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--dark);"><i class="fa-solid fa-book-bookmark" style="color: var(--secondary);"></i> Caderno de Exercícios Errados</h3>
+                            <p style="font-size: 0.88rem; color: var(--gray);">Aqui ficam guardadas automaticamente as questões em que errou no treino ou no simulado para rever antes do exame.</p>
+                        </div>
+                        <button type="button" class="btn btn-outline" onclick="clearWrongNotebook()">
+                            <i class="fa-solid fa-trash"></i> Limpar Caderno
+                        </button>
+                    </div>
+                    <div id="wrongExercisesList"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 800;">Entrar na Conta EXAME PREPARADO MZ</h3>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email ou Telemóvel</label>
+                    <input type="text" class="form-control" required placeholder="Seu contacto ou email">
+                </div>
+                <div class="form-group">
+                    <label>Palavra-passe</label>
+                    <input type="password" class="form-control" required placeholder="Sua palavra-passe">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px;">Entrar no Painel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>EXAME PREPARADO MZ</h4>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">A plataforma líder em Moçambique dedicada à excelência académica, treinamento prático e preparação para exames nacionais desde 2018.</p>
+                <p style="color: var(--accent); font-size: 0.85rem;"><i class="fa-solid fa-shield-halved"></i> Pagamentos seguros via M-Pesa</p>
+            </div>
+            <div class="footer-col">
+                <h4>Links Úteis</h4>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#testemunhos">Testemunhos (2018-2026)</a></li>
+                    <li><a href="#whatsapp">Grupo WhatsApp</a></li>
+                    <li><a href="#inscricao">Inscrição Exames 2026</a></li>
+                    <li><a href="#quiz">Treinamento EXAME PREPARADO MOZ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Pagamento & Titular</h4>
+                <ul>
+                    <li><a href="#inscricao">Titular M-Pesa: Abel Armindo Muhalate</a></li>
+                    <li><a href="#inscricao">Área de Pagamento: Secção Inscrição 2026</a></li>
+                    <li><a href="#whatsapp">Suporte Docente: Grupo WhatsApp</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Moçambique</h4>
+                <ul>
+                    <li><a href="#">Maputo • Matola • Beira</a></li>
+                    <li><a href="#">Nampula • Chimoio • Quelimane</a></li>
+                    <li><a href="#">MINEDH Moçambique</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 EXAME PREPARADO MZ. Todos os direitos reservados. Desenvolvido para os estudantes de Moçambique.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown timer logic
+        function updateCountdown() {
+            const now = new Date();
+            let examDate = new Date(now.getFullYear(), 10, 15);
+            if (now > examDate) {
+                examDate.setFullYear(now.getFullYear() + 1);
+            }
+            const diff = examDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / 1000 / 60) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('days').innerText = String(days).padStart(3, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('mins').innerText = String(mins).padStart(2, '0');
+            document.getElementById('secs').innerText = String(secs).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 20 Testimonials (Exames + Treinamento EXAME PREPARADO MOZ) - Automatic only
+        const testimonialsData = [
+            { year: "2025", focus: "Exames & Treinamento", name: "Helena Muianga (Maputo)", text: "Estudei com o Treinamento EXAME PREPARADO MOZ na 12.ª classe em 2025. No dia de Matemática e Física, saíram exatamente os mesmos padrões. Tirei 18 valores!" },
+            { year: "2025", focus: "Treinamento EXAME PREPARADO MOZ", name: "Dércio Sitoe (Matola)", text: "O Treinamento EXAME PREPARADO MOZ mudou a minha forma de resolver exercícios difíceis. Repeti as questões até não errar mais e passei com segurança." },
+            { year: "2024", focus: "Exames Nacionais", name: "Fátima Chissano (Beira)", text: "Nos exames de 2024 da 12.ª classe, o material do EXAME PREPARADO MZ deu-me confiança total. Tudo o que revimos na véspera apareceu na prova." },
+            { year: "2024", focus: "Treinamento EXAME PREPARADO MOZ", name: "Nelson Macaringue (Xai-Xai)", text: "O ritmo do Treinamento EXAME PREPARADO MOZ é excelente. Em duas semanas melhorei muito a velocidade nos cálculos e na interpretação de textos." },
+            { year: "2023", focus: "Exames & Treinamento", name: "Armindo Cossa (Beira)", text: "Em 2023 na 9.ª classe, fiquei impressionado. As perguntas de Português e Biologia estavam alinhadas com o exame e o treinamento preparou-me a 100%." },
+            { year: "2023", focus: "Treinamento EXAME PREPARADO MOZ", name: "Ivone Tembe (Inhambane)", text: "Antes eu travava nas equações e funções. Com o Treinamento EXAME PREPARADO MOZ, entendi cada passo e fui muito bem no exame nacional." },
+            { year: "2022", focus: "Exames Nacionais", name: "Mauro Langa (Nampula)", text: "Em 2022 fiz o exame da 12.ª classe com o EXAME PREPARADO MZ. A organização e a seriedade fizeram toda a diferença na minha aprovação." },
+            { year: "2022", focus: "Treinamento EXAME PREPARADO MOZ", name: "Shelton Mucavele (Quelimane)", text: "O Treinamento EXAME PREPARADO MOZ ajuda muito a identificar onde erramos. Rever as falhas antes do dia do exame salvou a minha média." },
+            { year: "2021", focus: "Exames & Treinamento", name: "Kátia Guambe (Tete)", text: "Na 9.ª classe em 2021, o treinamento e os exames do EXAME PREPARADO MZ deram-me calma na sala. Saí da prova sabendo que tinha passado." },
+            { year: "2021", focus: "Treinamento EXAME PREPARADO MOZ", name: "Rúben Massingue (Chimoio)", text: "Recomendo o Treinamento EXAME PREPARADO MOZ a qualquer aluno que queira resultados reais sem perder tempo com resumos confusos." },
+            { year: "2020", focus: "Exames Nacionais", name: "Celso Nhantumbo (Nampula)", text: "Desde 2018 que ouço falar. Em 2020 na 12.ª classe, o suporte e os exames do EXAME PREPARADO MZ foram decisivos para fechar o ano com sucesso." },
+            { year: "2020", focus: "Treinamento EXAME PREPARADO MOZ", name: "Bárbara Mondlane (Pemba)", text: "Mesmo treinando pelo telemóvel, o Treinamento EXAME PREPARADO MOZ é prático e direto ao ponto. Fiz dezenas de exercícios até ganhar ritmo." },
+            { year: "2019", focus: "Exames & Treinamento", name: "Tânia Bila (Lichinga)", text: "Em 2019 o Treinamento EXAME PREPARADO MOZ ajudou-me a dominar Física e Matemática. No exame oficial senti que já conhecia o estilo das perguntas." },
+            { year: "2019", focus: "Exames Nacionais", name: "Gerson Mabunda (Maputo)", text: "Passei na 12.ª classe em 2019 com excelentes notas. O EXAME PREPARADO MZ cumpre o que promete aos estudantes moçambicanos." },
+            { year: "2018", focus: "Exames & Treinamento", name: "Olívia Chauque (Maxixe)", text: "Desde a primeira geração em 2018, o EXAME PREPARADO MZ e o seu treinamento já mostravam resultados fortes nos exames da 9.ª e 12.ª classes." },
+            { year: "2018", focus: "Treinamento EXAME PREPARADO MOZ", name: "Cláudio Manhiça (Boane)", text: "O Treinamento EXAME PREPARADO MOZ ensinou-me a gerir o tempo de prova e a não repetir erros bobos. Valeu cada minuto de dedicação." },
+            { year: "2025", focus: "Treinamento EXAME PREPARADO MOZ", name: "Jéssica Vilanculos (Vilankulo)", text: "Adorei fazer o Treinamento EXAME PREPARADO MOZ diariamente. Os exercícios práticos deixaram-me muito mais segura para encarar o exame." },
+            { year: "2024", focus: "Exames & Treinamento", name: "Samuel Dava (Nacala)", text: "Entre o treinamento e os exames, o EXAME PREPARADO MZ foi o meu maior apoio na reta final da 12.ª classe. Consegui a vaga que queria." },
+            { year: "2023", focus: "Treinamento EXAME PREPARADO MOZ", name: "Delfina Matola (Chókwè)", text: "Treinar com o EXAME PREPARADO MOZ tirou o medo das provas nacionais. Cada questão resolvida aumentava a minha confiança." },
+            { year: "2026", focus: "Exames & Treinamento", name: "Yasser Amade (Nampula)", text: "Estou a preparar-me para 2026 com o Treinamento EXAME PREPARADO MOZ e já sinto uma evolução enorme nas disciplinas de exame." }
+        ];
+
+        const track = document.getElementById('carouselTrack');
+        const indicatorsEl = document.getElementById('carouselIndicators');
+        const perSlide = 2;
+        const totalSlides = Math.ceil(testimonialsData.length / perSlide);
+        let currentSlide = 0;
+        let isPaused = false;
+
+        function renderCarousel() {
+            track.innerHTML = '';
+            indicatorsEl.innerHTML = '';
+
+            for (let s = 0; s < totalSlides; s++) {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'carousel-slide';
+
+                const slice = testimonialsData.slice(s * perSlide, s * perSlide + perSlide);
+                slice.forEach((item) => {
+                    const card = document.createElement('div');
+                    card.className = 'testimonial-card';
+                    card.innerHTML = `
+                        <div>
+                            <span class="year-badge">${item.year}</span>
+                            <span class="tag-focus">${item.focus}</span>
+                            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <h4>${item.name}</h4>
+                            <p>"${item.text}"</p>
+                        </div>
+                    `;
+                    slideDiv.appendChild(card);
+                });
+
+                track.appendChild(slideDiv);
+
+                const dot = document.createElement('span');
+                dot.className = 'indicator-dot' + (s === currentSlide ? ' active' : '');
+                indicatorsEl.appendChild(dot);
+            }
+
+            applySlideTransform();
+        }
+
+        function applySlideTransform() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            const dots = indicatorsEl.querySelectorAll('.indicator-dot');
+            dots.forEach((d, idx) => d.classList.toggle('active', idx === currentSlide));
+        }
+
+        function pauseCarousel() { isPaused = true; }
+        function resumeCarousel() { isPaused = false; }
+
+        // Automatic right-to-left rotation every 15 seconds without manual buttons or countdown text
+        setInterval(() => {
+            if (!isPaused) {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                applySlideTransform();
+            }
+        }, 15000);
+
+        // Selected Class option for payment
+        let selectedClassType = '12';
+        function selectClassOption(cls) {
+            selectedClassType = cls;
+            if (cls === '12') {
+                document.getElementById('card12').classList.add('selected');
+                document.getElementById('card9').classList.remove('selected');
+            } else {
+                document.getElementById('card9').classList.add('selected');
+                document.getElementById('card12').classList.remove('selected');
+            }
+        }
+
+        // Payment Submission & Automatic Verification Mock
+        function submitPayment(e) {
+            e.preventDefault();
+            const name = document.getElementById('payName').value;
+            const phone = document.getElementById('payPhone').value;
+            const txId = document.getElementById('payTxId').value;
+            
+            if (!name || !phone || !txId) {
+                alert('Por favor, preencha todos os campos do formulário.');
+                return;
+            }
+
+            const priceText = selectedClassType === '12' ? '460 MT' : '340 MT';
+            const classText = selectedClassType + '.ª Classe';
+
+            const listContainer = document.getElementById('verifiedList');
+            const newItem = document.createElement('div');
+            newItem.className = 'paid-item';
+            newItem.innerHTML = `
+                <div>
+                    <strong>${name}</strong>
+                    <div style="font-size: 0.8rem; color: var(--gray);">${classText} • ${priceText} (M-Pesa: ${phone})</div>
+                </div>
+                <span class="status-badge"><i class="fa-solid fa-check"></i> Verificado & Confirmado</span>
+            `;
+            listContainer.prepend(newItem);
+
+            alert('Comprovante submetido com sucesso! O sistema M-Pesa verificou a transferência para o número 841597502 (Abel Armindo Muhalate). O seu nome já consta na lista oficial e receberá os exames na noite anterior!');
+            document.getElementById('paymentForm').reset();
+        }
+
+        // Modal Controls
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        // Subjects catalog for 9th and 12th classes
+        const subjectsByClass = {
+            "9": [
+                { value: "all", label: "Todas as Disciplinas (9.ª)" },
+                { value: "portugues", label: "Língua Portuguesa" },
+                { value: "matematica", label: "Matemática" },
+                { value: "biologia", label: "Biologia" },
+                { value: "fisica", label: "Física" },
+                { value: "quimica", label: "Química" },
+                { value: "historia", label: "História" },
+                { value: "geografia", label: "Geografia" },
+                { value: "ingles", label: "Inglês" }
+            ],
+            "12": [
+                { value: "all", label: "Todas as Disciplinas (12.ª)" },
+                { value: "portugues", label: "Língua Portuguesa" },
+                { value: "matematica", label: "Matemática" },
+                { value: "biologia", label: "Biologia" },
+                { value: "fisica", label: "Física" },
+                { value: "quimica", label: "Química" },
+                { value: "historia", label: "História" },
+                { value: "geografia", label: "Geografia" },
+                { value: "ingles", label: "Inglês" },
+                { value: "filosofia", label: "Filosofia" },
+                { value: "dgd", label: "Desenho e Geometria Descritiva" }
+            ],
+            "all": [
+                { value: "all", label: "Todas as Disciplinas" },
+                { value: "portugues", label: "Língua Portuguesa" },
+                { value: "matematica", label: "Matemática" },
+                { value: "biologia", label: "Biologia" },
+                { value: "fisica", label: "Física" },
+                { value: "quimica", label: "Química" },
+                { value: "historia", label: "História" },
+                { value: "geografia", label: "Geografia" },
+                { value: "ingles", label: "Inglês" },
+                { value: "filosofia", label: "Filosofia" },
+                { value: "dgd", label: "Desenho e Geometria Descritiva" }
+            ]
+        };
+
+        // Questions bank covering all exam subjects for 9th and 12th classes
+        const questions = [
+            // 9.ª Classe
+            { id: "q9_pt", class: "9", subject: "portugues", category: "Língua Portuguesa • 9.ª Classe", difficulty: "Exame Oficial 9.ª", text: "Na frase 'Os alunos estudaram ontem para o exame', qual é a função sintática de 'os alunos'?", options: ["Complemento direto", "Sujeito simples", "Complemento indireto", "Predicativo do sujeito"], correct: 1, explanation: "'Os alunos' é o núcleo que pratica a ação verbal, exercendo a função de sujeito simples." },
+            { id: "q9_mat", class: "9", subject: "matematica", category: "Matemática • 9.ª Classe", difficulty: "Exame Oficial 9.ª", text: "Qual é a solução da equação do 2.º grau x² - 5x + 6 = 0?", options: ["x = -2 e x = -3", "x = 1 e x = 6", "x = 2 e x = 3", "x = 0 e x = 5"], correct: 2, explanation: "Fatorando x² - 5x + 6 = 0 obtém-se (x - 2)(x - 3) = 0, cujas raízes são x = 2 e x = 3." },
+            { id: "q9_bio", class: "9", subject: "biologia", category: "Biologia • 9.ª Classe", difficulty: "Exame Oficial 9.ª", text: "Qual é o organelo celular responsável pela respiração celular e produção de ATP?", options: ["Ribossoma", "Mitocôndria", "Complexo de Golgi", "Lisossoma"], correct: 1, explanation: "A mitocôndria realiza a respiração celular aeróbia, libertando energia útil para a célula." },
+            { id: "q9_fis", class: "9", subject: "fisica", category: "Física • 9.ª Classe", difficulty: "Exame Oficial 9.ª", text: "Qual é a unidade de força no Sistema Internacional de Unidades (SI)?", options: ["Joule (J)", "Watt (W)", "Newton (N)", "Pascal (Pa)"], correct: 2, explanation: "No SI, a força mede-se em Newton (N), correspondente a kg·m/s²." },
+            { id: "q9_qui", class: "9", subject: "quimica", category: "Química • 9.ª Classe", difficulty: "Exame Oficial 9.ª", text: "Qual é a fórmula química da água?", options: ["CO₂", "H₂O", "NaCl", "CH₄"], correct: 1, explanation: "A molécula de água é formada por dois átomos de hidrogénio e um de oxigénio: H₂O." },
+            { id: "q9_his", class: "9", subject: "historia", category: "História • 9.ª Classe", difficulty: "Exame Oficial 9.ª", text: "Em que data foi proclamada a Independência Nacional de Moçambique?", options: ["7 de Setembro de 1974", "25 de Setembro de 1964", "25 de Junho de 1975", "3 de Fevereiro de 1969"], correct: 2, explanation: "A Independência de Moçambique foi proclamada a 25 de Junho de 1975." },
+            { id: "q9_geo", class: "9", subject: "geografia", category: "Geografia • 9.ª Classe", difficulty: "Exame Oficial 9.ª", text: "Qual é o rio mais longo de Moçambique?", options: ["Rio Save", "Rio Limpopo", "Rio Zambeze", "Rio Rovuma"], correct: 2, explanation: "O rio Zambeze é o maior e mais importante curso de água de Moçambique." },
+            { id: "q9_ing", class: "9", subject: "ingles", category: "Inglês • 9.ª Classe", difficulty: "Exame Oficial 9.ª", text: "Choose the correct form: 'She ___ to school every morning.'", options: ["go", "goes", "going", "gone"], correct: 1, explanation: "In the Present Simple for third-person singular ('she'), we add -es to 'go' -> 'goes'." },
+
+            // 12.ª Classe
+            { id: "q12_pt", class: "12", subject: "portugues", category: "Língua Portuguesa • 12.ª Classe", difficulty: "Exame Oficial 12.ª", text: "Identifique a figura de estilo presente na frase: 'O silêncio da noite gritava por socorro.'", options: ["Metáfora", "Personificação (Prosopopeia)", "Hipérbole", "Antítese"], correct: 1, explanation: "Atribui-se uma ação humana ('gritava') a uma realidade abstrata/inanimada ('silêncio'), o que caracteriza a personificação." },
+            { id: "q12_mat", class: "12", subject: "matematica", category: "Matemática • 12.ª Classe", difficulty: "Exame Oficial 12.ª", text: "Qual é o domínio da função real de variável real definida por f(x) = ln(x - 3)?", options: ["x ∈ ]3, +∞[", "x ∈ [3, +∞[", "x ∈ ]-∞, 3[", "x ∈ ℝ \\ {3}"], correct: 0, explanation: "O argumento do logaritmo deve ser estritamente positivo: x - 3 > 0 ⇔ x > 3, isto é, ]3, +∞[." },
+            { id: "q12_bio", class: "12", subject: "biologia", category: "Biologia • 12.ª Classe", difficulty: "Exame Oficial 12.ª", text: "Qual molécula é responsável por armazenar a informação genética na maioria dos organismos?", options: ["RNA transportador", "ATP", "DNA", "Amilase"], correct: 2, explanation: "O ácido desoxirribonucleico (DNA) contém a informação genética hereditária." },
+            { id: "q12_fis", class: "12", subject: "fisica", category: "Física • 12.ª Classe", difficulty: "Exame Oficial 12.ª", text: "Segundo a 2.ª Lei de Newton, a aceleração de um corpo é diretamente proporcional a quê?", options: ["À massa do corpo", "À força resultante aplicada", "À velocidade constante", "Ao deslocamento"], correct: 1, explanation: "Pela 2.ª Lei de Newton (F_res = m · a), a aceleração aumenta diretamente com a força resultante." },
+            { id: "q12_qui", class: "12", subject: "quimica", category: "Química • 12.ª Classe", difficulty: "Exame Oficial 12.ª", text: "Qual é o grupo funcional característico dos álcoois?", options: ["Grupo carboxilo (-COOH)", "Grupo hidroxilo (-OH)", "Grupo carbonilo (-C=O)", "Grupo amina (-NH₂)"], correct: 1, explanation: "Os álcoois caracterizam-se pela ligação do grupo hidroxilo (-OH) a um carbono saturado." },
+            { id: "q12_his", class: "12", subject: "historia", category: "História • 12.ª Classe", difficulty: "Exame Oficial 12.ª", text: "A Conferência de Berlim (1884-1885) teve como objetivo principal:", options: ["Criar a ONU", "Partilhar o continente africano entre potências europeias", "Acabar com a Guerra Fria", "Proclamar a independência das colónias"], correct: 1, explanation: "A Conferência de Berlim definiu regras para a ocupação e partilha colonial de África pelas potências europeias." },
+            { id: "q12_geo", class: "12", subject: "geografia", category: "Geografia • 12.ª Classe", difficulty: "Exame Oficial 12.ª", text: "Qual indicador demográfico mede o número médio de anos que uma pessoa pode esperar viver ao nascer?", options: ["Taxa de natalidade", "Esperança média de vida", "Saldo migratório", "Densidade populacional"], correct: 1, explanation: "A esperança média de vida indica o número médio de anos de vida esperado para um recém-nascido." },
+            { id: "q12_ing", class: "12", subject: "ingles", category: "Inglês • 12.ª Classe", difficulty: "Exame Oficial 12.ª", text: "Select the right option: 'If I ___ harder, I will pass the national exam.'", options: ["study", "studied", "will study", "am studying"], correct: 0, explanation: "First conditional uses 'If + Present Simple, ... will + base verb' for real future possibilities." },
+            { id: "q12_fil", class: "12", subject: "filosofia", category: "Filosofia • 12.ª Classe", difficulty: "Exame Oficial 12.ª", text: "A frase célebre 'Penso, logo existo' (Cogito, ergo sum) pertence a qual filósofo?", options: ["Aristóteles", "René Descartes", "Platão", "David Hume"], correct: 1, explanation: "René Descartes formulou 'Penso, logo existo' como fundamento primeiro da certeza racional." },
+            { id: "q12_dgd", class: "12", subject: "dgd", category: "Desenho e Geometria Descritiva • 12.ª Classe", difficulty: "Exame Oficial 12.ª", text: "Num sistema de dupla projeção ortogonal, qual é a cota de um ponto situado no Plano Horizontal de Projeção (PHP)?", options: ["Cota igual a zero", "Abcissa negativa", "Afastamento nulo", "Cota infinita"], correct: 0, explanation: "Todo ponto pertencente ao PHP tem distância zero em relação a esse plano, ou seja, cota nula (z = 0)." }
+        ];
+
+        const STORAGE_KEY = "exame_preparado_moz_caderno_erros_v1";
+        let wrongExercises = [];
+        let filteredQuestions = [...questions];
+        let currentFilteredIdx = 0;
+        let activeQuestion = questions[0];
+
+        // Simulado state
+        let simuladoQuestions = [];
+        let simuladoIndex = 0;
+        let simuladoScore = 0;
+        let simuladoClassActive = "9";
+
+        function populateSubjectDropdown(clsVal) {
+            const subjSelect = document.getElementById('quizSubject');
+            const list = subjectsByClass[clsVal] || subjectsByClass["all"];
+            subjSelect.innerHTML = list.map(item => `<option value="${item.value}">${item.label}</option>`).join('');
+        }
+
+        function handleClassChange() {
+            const clsVal = document.getElementById('quizClass').value;
+            populateSubjectDropdown(clsVal);
+            updateQuestion(false);
+        }
+
+        function loadWrongFromStorage() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                wrongExercises = saved ? JSON.parse(saved) : [];
+            } catch (e) {
+                wrongExercises = [];
+            }
+            renderWrongNotebook();
+        }
+
+        function saveWrongToStorage() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(wrongExercises));
+            } catch (e) {}
+            renderWrongNotebook();
+        }
+
+        function addWrongExercise(q, chosenIdx) {
+            const exists = wrongExercises.some(item => item.id === q.id);
+            if (!exists) {
+                wrongExercises.unshift({
+                    id: q.id,
+                    category: q.category,
+                    difficulty: q.difficulty,
+                    text: q.text,
+                    options: q.options,
+                    correct: q.correct,
+                    chosen: chosenIdx,
+                    explanation: q.explanation,
+                    addedAt: new Date().toLocaleDateString('pt-PT')
+                });
+                saveWrongToStorage();
+            }
+        }
+
+        function removeWrongExercise(id) {
+            wrongExercises = wrongExercises.filter(item => item.id !== id);
+            saveWrongToStorage();
+        }
+
+        function clearWrongNotebook() {
+            if (!wrongExercises.length) return;
+            if (confirm("Deseja limpar todos os exercícios do Caderno de Exercícios Errados?")) {
+                wrongExercises = [];
+                saveWrongToStorage();
+            }
+        }
+
+        function renderWrongNotebook() {
+            const count = wrongExercises.length;
+            document.getElementById('wrongCountBadge').textContent = count;
+            document.getElementById('wrongCountInline').textContent = count;
+
+            const container = document.getElementById('wrongExercisesList');
+            if (!count) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: var(--gray); background: white; border-radius: 10px; border: 1px dashed var(--border);">
+                        <i class="fa-solid fa-check-double" style="font-size: 2rem; color: var(--primary); margin-bottom: 0.75rem;"></i>
+                        <p style="font-weight: 700; color: var(--dark);">Nenhum exercício errado registado!</p>
+                        <p style="font-size: 0.9rem;">Sempre que errar uma pergunta no treinamento ou no simulado, ela aparecerá aqui automaticamente para revisão.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const letters = ['A', 'B', 'C', 'D'];
+            container.innerHTML = wrongExercises.map(item => `
+                <div class="wrong-item-card">
+                    <div class="wrong-item-meta">
+                        <span>${item.category} • ${item.difficulty}</span>
+                        <span>Registado em ${item.addedAt}</span>
+                    </div>
+                    <div style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.6rem; color: var(--dark);">${item.text}</div>
+                    <div style="font-size: 0.9rem; color: #991b1b; margin-bottom: 0.3rem;">
+                        <strong>Sua resposta anterior:</strong> ${letters[item.chosen]}) ${item.options[item.chosen]}
+                    </div>
+                    <div style="font-size: 0.9rem; color: #166534; margin-bottom: 0.5rem;">
+                        <strong>Resposta correta:</strong> ${letters[item.correct]}) ${item.options[item.correct]}
+                    </div>
+                    <div style="font-size: 0.88rem; color: var(--gray); background: #f8fafc; padding: 10px; border-radius: 8px;">
+                        <strong>Explicação:</strong> ${item.explanation}
+                    </div>
+                    <div class="wrong-item-actions">
+                        <button type="button" class="btn btn-primary" onclick="practiceWrongItem('${item.id}')">
+                            <i class="fa-solid fa-play"></i> Praticar Agora
+                        </button>
+                        <button type="button" class="btn btn-outline" onclick="removeWrongExercise('${item.id}')">
+                            <i class="fa-solid fa-check"></i> Marcar Como Dominado
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function practiceWrongItem(id) {
+            const target = questions.find(q => q.id === id);
+            if (!target) return;
+            switchTrainingTab('training');
+            activeQuestion = target;
+            renderActiveQuestion("A rever questão do Caderno de Exercícios Errados.");
+        }
+
+        function switchTrainingTab(tab) {
+            document.getElementById('tabTraining').classList.toggle('active', tab === 'training');
+            document.getElementById('tabSimulado').classList.toggle('active', tab === 'simulado');
+            document.getElementById('tabNotebook').classList.toggle('active', tab === 'notebook');
+
+            document.getElementById('trainingView').style.display = tab === 'training' ? 'block' : 'none';
+            document.getElementById('simuladoView').style.display = tab === 'simulado' ? 'block' : 'none';
+            document.getElementById('notebookView').classList.toggle('active', tab === 'notebook');
+
+            if (tab === 'simulado' && !simuladoQuestions.length) {
+                renderSimuladoIntro();
+            }
+        }
+
+        function updateQuestion(shuffle = false) {
+            const clsVal = document.getElementById('quizClass').value;
+            const subjVal = document.getElementById('quizSubject').value;
+
+            const matches = questions.filter(q => {
+                const matchClass = clsVal === 'all' || q.class === clsVal;
+                const matchSubj = subjVal === 'all' || q.subject === subjVal;
+                return matchClass && matchSubj;
+            });
+
+            filteredQuestions = matches.length ? matches : [...questions];
+
+            if (shuffle && filteredQuestions.length > 1) {
+                currentFilteredIdx = (currentFilteredIdx + 1) % filteredQuestions.length;
+            } else {
+                currentFilteredIdx = currentFilteredIdx % filteredQuestions.length;
+            }
+
+            activeQuestion = filteredQuestions[currentFilteredIdx];
+
+            const clsLabel = clsVal === 'all' ? 'Todas as Classes' : `${clsVal}.ª Classe`;
+            const subjLabel = document.getElementById('quizSubject').selectedOptions[0]?.text || 'Todas as Disciplinas';
+            const fallbackNote = !matches.length ? ' (A mostrar questões gerais disponíveis)' : '';
+
+            renderActiveQuestion(`Atualizado • ${clsLabel} / ${subjLabel} (${currentFilteredIdx + 1} de ${filteredQuestions.length})${fallbackNote}`);
+        }
+
+        function renderActiveQuestion(statusText = '') {
+            const q = activeQuestion;
+            document.getElementById('qCategory').innerText = q.category;
+            document.getElementById('qDifficulty').innerText = q.difficulty;
+            document.getElementById('qText').innerText = q.text;
+
+            if (statusText) {
+                document.getElementById('filterStatusMsg').innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--primary);"></i> ${statusText}`;
+            }
+
+            const optionsContainer = document.getElementById('qOptions');
+            optionsContainer.innerHTML = '';
+            const letters = ['A', 'B', 'C', 'D'];
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span style="font-weight: 800; color: var(--primary);">${letters[idx]})</span> ${opt}`;
+                btn.onclick = () => checkAnswer(idx);
+                optionsContainer.appendChild(btn);
+            });
+
+            const feedback = document.getElementById('qFeedback');
+            feedback.className = 'feedback-box';
+            feedback.style.display = 'none';
+            feedback.innerHTML = '';
+        }
+
+        function checkAnswer(selected) {
+            const q = activeQuestion;
+            const buttons = document.querySelectorAll('#qOptions .option-btn');
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === q.correct) {
+                    btn.classList.add('correct');
+                } else if (idx === selected && selected !== q.correct) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            const feedback = document.getElementById('qFeedback');
+            if (selected === q.correct) {
+                removeWrongExercise(q.id);
+                feedback.className = 'feedback-box success';
+                feedback.innerHTML = `<strong>Resposta Correta! Parabéns!</strong><br>${q.explanation}`;
+            } else {
+                addWrongExercise(q, selected);
+                feedback.className = 'feedback-box error';
+                feedback.innerHTML = `<strong>Resposta Incorreta.</strong> Guardada automaticamente no seu <strong>Caderno de Exercícios Errados</strong> para rever mais tarde.<br><br>${q.explanation}`;
+            }
+            feedback.style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentFilteredIdx = (currentFilteredIdx + 1) % filteredQuestions.length;
+            activeQuestion = filteredQuestions[currentFilteredIdx];
+            renderActiveQuestion(`Questão ${currentFilteredIdx + 1} de ${filteredQuestions.length}`);
+        }
+
+        // Teste Simulado por Classe logic
+        function renderSimuladoIntro() {
+            document.getElementById('simuladoArea').innerHTML = `
+                <div class="question-box" style="text-align: center;">
+                    <p style="font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Pronto para testar o seu nível?</p>
+                    <p style="font-size: 0.92rem; color: var(--gray);">Selecione <strong>Simulado 9.ª Classe</strong> ou <strong>Simulado 12.ª Classe</strong> acima e clique em <strong>Iniciar Simulado</strong>.</p>
+                </div>
+            `;
+        }
+
+        function startSimulado() {
+            simuladoClassActive = document.getElementById('simuladoClassSelect').value;
+            simuladoQuestions = questions.filter(q => q.class === simuladoClassActive);
+            simuladoIndex = 0;
+            simuladoScore = 0;
+            renderSimuladoQuestion();
+        }
+
+        function renderSimuladoQuestion() {
+            const area = document.getElementById('simuladoArea');
+            if (simuladoIndex >= simuladoQuestions.length) {
+                const total = simuladoQuestions.length;
+                const percent = Math.round((simuladoScore / total) * 100);
+                const nota20 = ((simuladoScore / total) * 20).toFixed(1);
+                area.innerHTML = `
+                    <div class="simulado-result-card">
+                        <span class="status-badge" style="font-size: 0.85rem; padding: 6px 14px;">Simulado ${simuladoClassActive}.ª Classe Concluído</span>
+                        <h3 style="font-size: 1.6rem; font-weight: 800; margin-top: 1rem; color: var(--dark);">Pontuação: ${simuladoScore} / ${total} (${percent}%)</h3>
+                        <p style="font-size: 1.05rem; font-weight: 700; color: var(--primary); margin: 0.4rem 0 1rem;">Classificação estimada: ${nota20} valores</p>
+                        <p style="font-size: 0.92rem; color: var(--gray); margin-bottom: 1.5rem;">As questões em que errou foram guardadas no seu Caderno de Exercícios Errados para revisão.</p>
+                        <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+                            <button type="button" class="btn btn-primary" onclick="startSimulado()"><i class="fa-solid fa-rotate-right"></i> Repetir Simulado ${simuladoClassActive}.ª Classe</button>
+                            <button type="button" class="btn btn-outline" onclick="switchTrainingTab('notebook')"><i class="fa-solid fa-book-open"></i> Ver Caderno de Erros</button>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            const q = simuladoQuestions[simuladoIndex];
+            const letters = ['A', 'B', 'C', 'D'];
+
+            area.innerHTML = `
+                <div class="question-box">
+                    <div class="question-header">
+                        <span>Simulado ${simuladoClassActive}.ª Classe • Questão ${simuladoIndex + 1} de ${simuladoQuestions.length}</span>
+                        <span>${q.category}</span>
+                    </div>
+                    <div class="question-title">${q.text}</div>
+                    <div class="options-grid" id="simOptions">
+                        ${q.options.map((opt, idx) => `
+                            <button type="button" class="option-btn" onclick="answerSimulado(${idx})">
+                                <span style="font-weight: 800; color: var(--primary);">${letters[idx]})</span> ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div class="feedback-box" id="simFeedback"></div>
+                </div>
+                <div style="display: flex; justify-content: flex-end;">
+                    <button type="button" class="btn btn-primary" id="simNextBtn" style="display: none;" onclick="nextSimuladoQuestion()">
+                        ${simuladoIndex + 1 === simuladoQuestions.length ? 'Ver Resultado Final' : 'Próxima do Simulado'} <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            `;
+        }
+
+        function answerSimulado(selected) {
+            const q = simuladoQuestions[simuladoIndex];
+            const buttons = document.querySelectorAll('#simOptions .option-btn');
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === q.correct) btn.classList.add('correct');
+                else if (idx === selected && selected !== q.correct) btn.classList.add('incorrect');
+            });
+
+            const fb = document.getElementById('simFeedback');
+            if (selected === q.correct) {
+                simuladoScore++;
+                removeWrongExercise(q.id);
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `<strong>Correto no Simulado!</strong><br>${q.explanation}`;
+            } else {
+                addWrongExercise(q, selected);
+                fb.className = 'feedback-box error';
+                fb.innerHTML = `<strong>Incorreto no Simulado.</strong> Enviado para o <strong>Caderno de Exercícios Errados</strong>.<br><br>${q.explanation}`;
+            }
+            fb.style.display = 'block';
+            document.getElementById('simNextBtn').style.display = 'inline-flex';
+        }
+
+        function nextSimuladoQuestion() {
+            simuladoIndex++;
+            renderSimuladoQuestion();
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            alert('Login efetuado com sucesso! Bem-vindo ao painel do estudante.');
+            closeModal('loginModal');
+        }
+
+        window.onload = function() {
+            renderCarousel();
+            loadWrongFromStorage();
+            populateSubjectDropdown(document.getElementById('quizClass').value);
+            updateQuestion(false);
+            renderSimuladoIntro();
+        };
+    </script>
+</body>
+</html>
